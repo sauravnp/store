@@ -1,27 +1,36 @@
 package com.sauravcodes.store;
 
-import org.springframework.boot.SpringApplication;
+import com.sauravcodes.entities.Address;
+import com.sauravcodes.entities.Tag;
+import com.sauravcodes.entities.User;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.core.annotation.Order;
+
 
 @SpringBootApplication
 public class StoreApplication {
 
     public static void main(String[] args) {
 
-       ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
+       //ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
+        var user = User.builder()
+                .id(1L)
+                .name("John")
+                .email("John@gmail.com")
+                .password("sdhf")
+                .build();
+        user.setName("John");
+        user.setEmail("John@gmail.com");
+        user.setPassword("sdhf");
 
-        //var orderService = context.getBean(OrderService.class);
-        //var orderService2 = context.getBean(OrderService.class);
-        //var manager = context.getBean(NotificationManager.class);
-        //orderService.placeOrder();
-        //manager.sendNotification();
-        //var resource = context.getBean(HeavyResource.class);
-        //context.close();
-        var userService = context.getBean(UserService.class);
-        userService.registerUser(new User(1L, "sauravneupane43@gmail.com", "saurav89", "saurav neupane"));
+        var address = Address.builder()
+                .street("street")
+                .city("city")
+                .state("state")
+                .zip("zip")
+                .build();
+
+        user.addTag("tag1");
+        System.out.println(user);
 
     }
 
